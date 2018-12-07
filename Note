@@ -1,0 +1,38 @@
+Create following Queues:
+---------------------------
+INPUT
+OUTPUT
+FAILURE
+
+
+Delete all other applications which are running in respective Integration Server  (optional).
+----------------------------
+
+Sample Input:
+
+<input>
+	<number>10</number>
+	<number>11</number>
+	<number>12</number>
+</input>
+
+
+
+Expected Output:
+
+	<output>
+		<number>
+			<inputNumber>10</inputNumber>
+			<type>not Prime</type>
+		</number>
+	
+		<number>
+			<inputNumber>11</inputNumber>
+			<type>Prime</type>
+		</number>
+		
+		<number>
+			<inputNumber>12</inputNumber>
+			<type>not Prime</type>
+		</number>
+</output>

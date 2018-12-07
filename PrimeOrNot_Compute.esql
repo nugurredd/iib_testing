@@ -1,0 +1,41 @@
+
+
+CREATE COMPUTE MODULE pass_Compute
+	CREATE FUNCTION Main() RETURNS BOOLEAN
+	BEGIN
+		 -- For finding number of input.number elements
+		DECLARE totalNumbers INTEGER CARDINALITY(InputRoot.XMLNSC.input.number[]);
+		
+		-- to maintain looping and required for creating output indexes
+		DECLARE index INTEGER 1;
+		
+		-- repeat loop for all elements
+		WHILE index<=totalNumbers DO
+			
+			-- getting value based on index
+			DECLARE inputNumber INTEGER InputRoot.XMLNSC.input.number[index];
+			
+			-- declaring boolean variable for finding final status
+			DECLARE flag BOOLEAN FALSE;
+			
+			-- Starting operation from 2 
+			DECLARE cursor INTEGER 2;
+			
+			-- repeat loop until flag value rest to new status or cursor value is lessthan to the input number
+			WHILE inputNumber>cursor AND flag=FALSE DO
+				IF MOD(inputNumber,cursor)=0 THEN
+					SET flag=TRUE;
+				END IF;
+				SET cursor=cursor+1;	
+			END WHILE; 
+			
+			SET OutputRoot.XMLNSC.output.number[index].inputNumber=inputNumber;
+			IF flag=TRUE THEN
+				SET OutputRoot.XMLNSC.output.number[index].type='Not Prime';
+			ELSE 
+				SET OutputRoot.XMLNSC.output.number[index].type='Prime';
+			END IF;
+			SET index=index+1;
+		END WHILE;
+	END;
+END MODULE;
