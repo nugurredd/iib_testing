@@ -36,6 +36,7 @@ CREATE COMPUTE MODULE pass_Compute
 				SET OutputRoot.XMLNSC.output.number[index].type='Prime';
 			END IF;
 			SET index=index+1;
+--			gjhg
 		END WHILE;
 	END;
 END MODULE;
